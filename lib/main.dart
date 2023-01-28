@@ -1,6 +1,9 @@
+import 'package:domain_driven_tut/injection.dart';
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 
 void main() {
+  configureInjection(Environment.prod);
   runApp(const MyApp());
 }
 
