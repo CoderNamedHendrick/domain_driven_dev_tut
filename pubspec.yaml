@@ -16,6 +16,11 @@ dependencies:
   dartz: ^0.10.1
   flutter_bloc: ^8.1.1
 
+  # firebase
+  firebase_auth: ^4.2.5
+  firebase_core: ^2.4.1
+  google_sign_in: ^5.4.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
