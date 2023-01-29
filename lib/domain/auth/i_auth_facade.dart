@@ -1,9 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:domain_driven_tut/domain/auth/auth_failure.dart';
 
+import 'user.dart';
 import 'value_objects.dart';
 
 abstract class IAuthFacade {
+  Future<Option<User>> getSignInUser();
+
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
     required EmailAddress emailAddress,
     required Password password,
@@ -15,4 +18,6 @@ abstract class IAuthFacade {
   });
 
   Future<Either<AuthFailure, Unit>> signInWithGoogle();
+
+  Future<void> signOut();
 }

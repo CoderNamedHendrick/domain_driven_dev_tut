@@ -1,4 +1,6 @@
 import 'package:dartz/dartz.dart';
+import 'package:domain_driven_tut/domain/auth/firebase_user_mapper.dart';
+import 'package:domain_driven_tut/domain/auth/user.dart' as d_user;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -16,6 +18,10 @@ class FirebaseAuthFacade implements IAuthFacade {
     this._firebaseAuth,
     this._googleSignIn,
   );
+
+  @override
+  Future<Option<d_user.User>> getSignInUser() async =>
+      optionOf(_firebaseAuth.currentUser?.toDomain());
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
@@ -86,4 +92,10 @@ class FirebaseAuthFacade implements IAuthFacade {
       return const Left(AuthFailure.serverError());
     }
   }
+
+  @override
+  Future<void> signOut() => Future.wait([
+        _googleSignIn.signOut(),
+        _firebaseAuth.signOut(),
+      ]);
 }

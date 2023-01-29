@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
+import 'package:uuid/uuid.dart';
 
 import 'errors.dart';
 import 'failures.dart';
@@ -29,4 +30,23 @@ abstract class ValueObject<T> {
 
   @override
   String toString() => 'Value(value: $value)';
+}
+
+class UniqueId extends ValueObject {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory UniqueId() {
+    return UniqueId._(
+      Right(const Uuid().v1()),
+    );
+  }
+
+  factory UniqueId.fromUniqueString(String uniqueId) {
+    return UniqueId._(
+      Right(uniqueId),
+    );
+  }
+
+  const UniqueId._(this.value);
 }
