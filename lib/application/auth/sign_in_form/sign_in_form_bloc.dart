@@ -18,8 +18,8 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
   final IAuthFacade _authFacade;
 
   SignInFormBloc(this._authFacade) : super(SignInFormState.initial()) {
-    on<SignInFormEvent>((event, emit) {
-      event.map(
+    on<SignInFormEvent>((event, emit) async {
+      await event.map(
         emailChanged: (e) {
           emit(state.copyWith(
             emailAddress: EmailAddress(e.emailStr),
