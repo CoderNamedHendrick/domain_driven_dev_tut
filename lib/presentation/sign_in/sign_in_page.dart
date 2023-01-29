@@ -16,7 +16,10 @@ class SignInPage extends StatelessWidget {
       ),
       body: BlocProvider(
         create: (context) => getIt<SignInFormBloc>(),
-        child: const SignInForm(),
+        child: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 18),
+          child: SignInForm(),
+        ),
       ),
     );
   }
