@@ -480,6 +480,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.8.0"
+  kt_dart:
+    dependency: "direct main"
+    description:
+      name: kt_dart
+      sha256: dfca709ef99a3d16526e5ab83064c950740d8795797441e31aad3671f8e4b855
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   lints:
     dependency: transitive
     description:
