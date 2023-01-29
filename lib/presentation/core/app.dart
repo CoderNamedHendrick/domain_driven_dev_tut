@@ -1,7 +1,6 @@
 import 'package:domain_driven_tut/application/auth/auth_bloc.dart';
 import 'package:domain_driven_tut/injection.dart';
 import 'package:domain_driven_tut/presentation/routes/router.dart';
-import 'package:domain_driven_tut/presentation/sign_in/sign_in_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
