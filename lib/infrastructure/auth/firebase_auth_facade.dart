@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:domain_driven_tut/domain/auth/firebase_user_mapper.dart';
+import 'package:domain_driven_tut/infrastructure/auth/firebase_user_mapper.dart';
 import 'package:domain_driven_tut/domain/auth/user.dart' as d_user;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
