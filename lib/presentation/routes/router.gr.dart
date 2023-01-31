@@ -29,6 +29,12 @@ class _$AppRouter extends RootStackRouter {
         child: const SignInPage(),
       );
     },
+    NotesOverViewRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const NotesOverViewPage(),
+      );
+    },
   };
 
   @override
@@ -39,7 +45,11 @@ class _$AppRouter extends RootStackRouter {
         ),
         RouteConfig(
           SignInRoute.name,
-          path: '/sign-in',
+          path: '/sign-in-page',
+        ),
+        RouteConfig(
+          NotesOverViewRoute.name,
+          path: '/notes-over-view-page',
         ),
       ];
 }
@@ -62,8 +72,20 @@ class SignInRoute extends PageRouteInfo<void> {
   const SignInRoute()
       : super(
           SignInRoute.name,
-          path: '/sign-in',
+          path: '/sign-in-page',
         );
 
   static const String name = 'SignInRoute';
+}
+
+/// generated route for
+/// [NotesOverViewPage]
+class NotesOverViewRoute extends PageRouteInfo<void> {
+  const NotesOverViewRoute()
+      : super(
+          NotesOverViewRoute.name,
+          path: '/notes-over-view-page',
+        );
+
+  static const String name = 'NotesOverViewRoute';
 }

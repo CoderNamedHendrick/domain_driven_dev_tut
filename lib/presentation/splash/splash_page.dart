@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:domain_driven_tut/presentation/routes/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,9 +15,10 @@ class SplashPage extends StatelessWidget {
         state.map(
           initial: (_) {},
           authenticated: (_) {
-            print('I am authenticated');
+            context.router.replaceNamed(const NotesOverViewRoute().path);
           },
-          unAuthenticated: (_) => context.router.replaceNamed('/sign-in'),
+          unAuthenticated: (_) =>
+              context.router.replaceNamed(const SignInRoute().path),
         );
       },
       child: const Scaffold(

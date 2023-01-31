@@ -27,6 +27,13 @@ class AppWidget extends StatelessWidget {
             primary: Colors.green.shade800,
             secondary: Colors.blueAccent,
           ),
+          floatingActionButtonTheme: FloatingActionButtonThemeData(
+            backgroundColor: Colors.blue.shade900,
+          ),
+          appBarTheme: AppBarTheme(
+            backgroundColor: Colors.green.shade800,
+            foregroundColor: Colors.white,
+          ),
           inputDecorationTheme: InputDecorationTheme(
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),

@@ -30,12 +30,11 @@ abstract class Note implements _$Note {
     return body.failureOrUnit
         .andThen(todos.failureOrUnit)
         .andThen(todos
-                .getOrCrash()
-                .map((todoItem) => todoItem.failureOption)
-                .filter((p0) => p0.isSome())
-                .getOrElse(0, (_) => const None())
-                .fold(() => const Right(unit), (f) => Left(f))
-            as Either<ValueFailure<dynamic>, Unit>)
+            .getOrCrash()
+            .map((todoItem) => todoItem.failureOption)
+            .filter((p0) => p0.isSome())
+            .getOrElse(0, (_) => const None())
+            .fold(() => right(unit), (f) => left(f)))
         .fold((f) => Some(f), (_) => const None());
   }
 }

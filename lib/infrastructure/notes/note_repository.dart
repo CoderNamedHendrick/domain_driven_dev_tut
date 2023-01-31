@@ -30,8 +30,7 @@ class NoteRepository implements INoteRepository {
           ),
         )
         .onErrorReturnWith((err, stackTrace) {
-      if (err is PlatformException &&
-          err.message!.contains('permission-denied')) {
+      if (err is PlatformException && err.code == 'PERMISSION_DENIED') {
         return const Left(NoteFailure.insufficientPermission());
       } else {
         return const Left(NoteFailure.unexpected());
@@ -56,8 +55,7 @@ class NoteRepository implements INoteRepository {
               .toImmutableList()),
         )
         .onErrorReturnWith((err, stackTrace) {
-      if (err is PlatformException &&
-          err.message!.contains('permission-denied')) {
+      if (err is PlatformException && err.code == ('PERMISSION_DENIED')) {
         return const Left(NoteFailure.insufficientPermission());
       } else {
         return const Left(NoteFailure.unexpected());
@@ -75,7 +73,7 @@ class NoteRepository implements INoteRepository {
 
       return const Right(unit);
     } on PlatformException catch (e) {
-      if (e.message!.contains('permission-denied')) {
+      if (e.code == ('PERMISSION_DENIED')) {
         return const Left(NoteFailure.insufficientPermission());
       }
 
@@ -93,11 +91,11 @@ class NoteRepository implements INoteRepository {
 
       return const Right(unit);
     } on PlatformException catch (e) {
-      if (e.message!.contains('permission-denied')) {
+      if (e.code == ('PERMISSION_DENIED')) {
         return const Left(NoteFailure.insufficientPermission());
       }
 
-      if (e.message!.contains('not-found')) {
+      if (e.code == ('NOT_FOUND')) {
         return const Left(NoteFailure.unableToUpdate());
       }
 
@@ -115,11 +113,11 @@ class NoteRepository implements INoteRepository {
 
       return const Right(unit);
     } on PlatformException catch (e) {
-      if (e.message!.contains('permission-denied')) {
+      if (e.code == ('PERMISSION_DENIED')) {
         return const Left(NoteFailure.insufficientPermission());
       }
 
-      if (e.message!.contains('not-found')) {
+      if (e.code == ('NOT_FOUND')) {
         return const Left(NoteFailure.unableToUpdate());
       }
 
