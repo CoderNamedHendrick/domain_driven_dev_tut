@@ -66,14 +66,12 @@ class NotesOverViewPage extends StatelessWidget {
                 context.bloc<AuthBloc>().add(const AuthEvent.signedOut());
               },
             ),
-            actions: [
-              const UncompletedSwitch(),
-            ],
+            actions: const [UncompletedSwitch()],
           ),
           body: const NotesOverviewBody(),
           floatingActionButton: FloatingActionButton(
             onPressed: () {
-              // TODO: Navigate to note form page
+              context.router.pushNamed(NoteFormRoute(editedNote: null).path);
             },
             child: const Icon(Icons.add),
           ),

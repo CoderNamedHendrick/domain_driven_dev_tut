@@ -22,7 +22,7 @@ class NoteFormBloc extends Bloc<NoteFormEvent, NoteFormState> {
 
   NoteFormBloc(this._noteRepository) : super(NoteFormState.initial()) {
     on<NoteFormEvent>((event, emit) async {
-      event.map(
+      await event.map(
         initialized: (e) {
           emit(
             e.initialNoteOption.fold(

@@ -35,6 +35,18 @@ class _$AppRouter extends RootStackRouter {
         child: const NotesOverViewPage(),
       );
     },
+    NoteFormRoute.name: (routeData) {
+      final args = routeData.argsAs<NoteFormRouteArgs>(
+          orElse: () => const NoteFormRouteArgs());
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: NoteFormPage(
+          key: args.key,
+          editedNote: args.editedNote,
+        ),
+        fullscreenDialog: true,
+      );
+    },
   };
 
   @override
@@ -50,6 +62,10 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           NotesOverViewRoute.name,
           path: '/notes-over-view-page',
+        ),
+        RouteConfig(
+          NoteFormRoute.name,
+          path: '/note-form-page',
         ),
       ];
 }
@@ -88,4 +104,38 @@ class NotesOverViewRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'NotesOverViewRoute';
+}
+
+/// generated route for
+/// [NoteFormPage]
+class NoteFormRoute extends PageRouteInfo<NoteFormRouteArgs> {
+  NoteFormRoute({
+    Key? key,
+    Note? editedNote,
+  }) : super(
+          NoteFormRoute.name,
+          path: '/note-form-page',
+          args: NoteFormRouteArgs(
+            key: key,
+            editedNote: editedNote,
+          ),
+        );
+
+  static const String name = 'NoteFormRoute';
+}
+
+class NoteFormRouteArgs {
+  const NoteFormRouteArgs({
+    this.key,
+    this.editedNote,
+  });
+
+  final Key? key;
+
+  final Note? editedNote;
+
+  @override
+  String toString() {
+    return 'NoteFormRouteArgs{key: $key, editedNote: $editedNote}';
+  }
 }
