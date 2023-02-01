@@ -5,6 +5,7 @@ import 'package:domain_driven_tut/application/core/bloc_provider.dart';
 import 'package:domain_driven_tut/application/notes/note_form/note_form_bloc.dart';
 import 'package:domain_driven_tut/injection.dart';
 import 'package:domain_driven_tut/presentation/notes/note_form/widgets/body_field_widget.dart';
+import 'package:domain_driven_tut/presentation/notes/notes_overview/widgets/color_field_widget.dart';
 import 'package:domain_driven_tut/presentation/routes/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -137,6 +138,7 @@ class NoteFormPageScaffold extends StatelessWidget {
               child: Column(
                 children: const [
                   BodyField(),
+                  ColorField(),
                 ],
               ),
             ),
