@@ -4,11 +4,15 @@ import 'package:dartz/dartz.dart';
 import 'package:domain_driven_tut/application/core/bloc_provider.dart';
 import 'package:domain_driven_tut/application/notes/note_form/note_form_bloc.dart';
 import 'package:domain_driven_tut/injection.dart';
+import 'package:domain_driven_tut/presentation/notes/note_form/misc/todo_item_presentation_classes.dart';
 import 'package:domain_driven_tut/presentation/notes/note_form/widgets/body_field_widget.dart';
-import 'package:domain_driven_tut/presentation/notes/notes_overview/widgets/color_field_widget.dart';
+import 'package:domain_driven_tut/presentation/notes/note_form/widgets/add_todo_tile_widget.dart';
+import 'package:domain_driven_tut/presentation/notes/note_form/widgets/color_field_widget.dart';
+import 'package:domain_driven_tut/presentation/notes/note_form/widgets/todo_list_widget.dart';
 import 'package:domain_driven_tut/presentation/routes/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 import '../../../domain/notes/note.dart';
 
@@ -130,16 +134,21 @@ class NoteFormPageScaffold extends StatelessWidget {
         buildWhen: (prev, curr) =>
             prev.showErrorMessages != curr.showErrorMessages,
         builder: (context, state) {
-          return Form(
-            autovalidateMode: state.showErrorMessages
-                ? AutovalidateMode.always
-                : AutovalidateMode.disabled,
-            child: SingleChildScrollView(
-              child: Column(
-                children: const [
-                  BodyField(),
-                  ColorField(),
-                ],
+          return ChangeNotifierProvider(
+            create: (_) => FormTodos(),
+            child: Form(
+              autovalidateMode: state.showErrorMessages
+                  ? AutovalidateMode.always
+                  : AutovalidateMode.disabled,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: const [
+                    BodyField(),
+                    ColorField(),
+                    TodoList(),
+                    AddTodoTile(),
+                  ],
+                ),
               ),
             ),
           );
